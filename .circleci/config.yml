@@ -6,15 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Restore packages
-        command: 
-          dotnet restore
+          name: Restore packages
+          command: 
+            dotnet restore
       - run:
-        name: Build App
-        command:
-          dotnet build
+          name: Build App
+          command:
+            dotnet build
       - run:
-        name: Run App
-        command:
-          dotnet run
-          
+          name: Run App
+          command:
+            dotnet run          

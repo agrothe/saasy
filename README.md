@@ -2,7 +2,7 @@
 SaaSy Framework - ASPNET Core development SaaS starter kit
 
 ### Status
-CircleCI Build - [![CircleCI](https://circleci.com/gh/agrothe/saasy.svg?style=svg)](https://circleci.com/gh/agrothe/saasy)
+TravisCI Build - [![Build Status](https://travis-ci.org/agrothe/saasy.svg?branch=master)](https://travis-ci.org/agrothe/saasy)
 
 ## Development Starter
 Tired of always starting from the same place, this starter project will provide a template providing:

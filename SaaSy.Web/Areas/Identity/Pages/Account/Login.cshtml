@@ -2,7 +2,7 @@
 @model LoginModel
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = Localizer["LogIn"];
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -10,7 +10,7 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h4>Use a local account to log in.</h4>
+                <h4>@Localizer["EmailLogin"]</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <button type="submit" class="btn btn-primary">@Localizer["LogIn"]</button>
                 </div>
                 <div class="form-group">
                     <p>
@@ -47,13 +47,14 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to log in.</h4>
+            <h4>@Localizer["OauthLogin"]</h4>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
+                            <!-- Not localized, as providers need to be added or this section removed before going to production -->
                             There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
                             for details on setting up this ASP.NET application to support logging in via external services.
                         </p>
@@ -66,7 +67,7 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="@string.Format(Localizer["LogInUsingAccount"].Value, provider.DisplayName)">@provider.DisplayName</button>
                                 }
                             </p>
                         </div>

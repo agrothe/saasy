@@ -1,34 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MediatR;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Internal;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using SaaSy.Data.Context;
+using SaaSy.Domain.Services.Identity;
 using SaaSy.Domain.Services.Util;
 using SaaSy.Entity.Identity;
-using MediatR;
-using System.Reflection;
-using SaaSy.Domain.Services.Identity;
-using SaaSy.Data.Context;
-using Microsoft.AspNetCore.Internal;
-using System.Globalization;
-using Microsoft.AspNetCore.Localization;
 using SaaSy.Resource;
-using Microsoft.AspNetCore.Mvc.Localization;
 using SaaSy.Web.Classes.Middleware;
-using Microsoft.Extensions.Options;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using System.Globalization;
 
 namespace SaaSy.Web
 {
@@ -81,11 +70,11 @@ namespace SaaSy.Web
             {
                 CultureInfo[] supportedCultures = new[]
                 {
-                    new CultureInfo("en"),
-                    new CultureInfo("fr")
+                    new CultureInfo(Const.Locale.EN),
+                    new CultureInfo(Const.Locale.FR)
                 };
 
-                options.DefaultRequestCulture = new RequestCulture("en");
+                options.DefaultRequestCulture = new RequestCulture(Const.Locale.EN);
                 options.SupportedCultures = supportedCultures;
                 options.SupportedUICultures = supportedCultures;
                 options.RequestCultureProviders.Clear();

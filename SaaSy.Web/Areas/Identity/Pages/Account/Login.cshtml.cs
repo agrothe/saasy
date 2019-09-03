@@ -36,7 +36,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public LoginViewModel Input { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
@@ -45,9 +45,9 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public class InputModel
+        public class LoginViewModel
         {
-            [Required]
+            [Required(ErrorMessage = "The Email field is required.")]
             [EmailAddress]
             public string Email { get; set; }
 

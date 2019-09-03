@@ -117,10 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ForgotYourPassword" xml:space="preserve">
-    <value>Forgot your password?</value>
-  </data>
-  <data name="RegisterAsNewUser" xml:space="preserve">
-    <value>Register as a new user</value>
+  <data name="The Email field is required." xml:space="preserve">
+    <value>The Email field is required......</value>
   </data>
 </root>

@@ -14,8 +14,8 @@ using Microsoft.Extensions.Options;
 using SaaSy.Data.Context;
 using SaaSy.Domain.Services.Identity;
 using SaaSy.Domain.Services.Util;
+using SaaSy.Entity;
 using SaaSy.Entity.Identity;
-using SaaSy.Resource;
 using SaaSy.Web.Classes.Middleware;
 using System.Globalization;
 
@@ -59,8 +59,6 @@ namespace SaaSy.Web
 
 
             // Add our Labels class for l10n, views are localized in SaaSy.Web.Resouces
-            services.AddSingleton<Labels>();
-
 
             services.AddLocalization(x => {
                 x.ResourcesPath = "Resources";

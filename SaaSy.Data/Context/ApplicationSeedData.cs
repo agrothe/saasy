@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SaaSy.Entity;
 using SaaSy.Entity.Entities.Tenants;
-using SaaSy.Resource;
 using System;
 using System.Collections.Generic;
 

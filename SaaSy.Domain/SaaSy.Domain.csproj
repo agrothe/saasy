@@ -14,7 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SaaSy.Data\SaaSy.Data.csproj" />
     <ProjectReference Include="..\SaaSy.Entity\SaaSy.Entity.csproj" />
-    <ProjectReference Include="..\SaaSy.Resource\SaaSy.Resource.csproj" />
   </ItemGroup>
 
   <ItemGroup>

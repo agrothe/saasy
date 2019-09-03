@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SaaSy.Resource
+namespace SaaSy.Entity
 {
     public class Const
     {

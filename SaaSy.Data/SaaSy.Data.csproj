@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SaaSy.Entity\SaaSy.Entity.csproj" />
-    <ProjectReference Include="..\SaaSy.Resource\SaaSy.Resource.csproj" />
   </ItemGroup>
 
 </Project>

@@ -31,6 +31,11 @@
 
 
   <ItemGroup>
+    <Compile Update="Resources\Areas\Identity\Pages\Account\ConfirmEmail.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConfirmEmail.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Areas\Identity\Pages\Account\Login.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -40,6 +45,10 @@
 
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\ConfirmEmail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmail.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\Login.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.Designer.cs</LastGenOutput>

@@ -15,6 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account
 {
@@ -24,6 +25,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly IConfiguration _configuration;
+        public IConfiguration Configuration => _configuration;
 
         public LoginModel(
             SignInManager<ApplicationUser> signInManager, 
@@ -45,17 +47,20 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
         [TempData]
         public string ErrorMessage { get; set; }
 
+
         public class LoginViewModel
         {
-            [Required(ErrorMessage = "The Email field is required.")]
-            [EmailAddress]
+            [Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(Login))]
+            [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(Login))]
+            [Display(Name = "Email", ResourceType = typeof(Login))]
             public string Email { get; set; }
 
-            [Required]
-            [DataType(DataType.Password)]
+            [Required(ErrorMessageResourceName = "PasswordRequired", ErrorMessageResourceType = typeof(Login))]
+            [DataType(DataType.Password,ErrorMessageResourceName = "InvalidPassword", ErrorMessageResourceType = typeof(Login))]
+            [Display(Name = "Password", ResourceType = typeof(Login))]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "RememberMe", ResourceType = typeof(Login))]
             public bool RememberMe { get; set; }
         }
 
@@ -102,7 +107,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, Login.InvalidLoginAttempt);
                     return Page();
                 }
             }

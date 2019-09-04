@@ -117,25 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Email" xml:space="preserve">
+    <value>FR_Email Address</value>
+  </data>
   <data name="EmailLogin" xml:space="preserve">
-    <value>Log in with your email address</value>
+    <value>FR_Log in with your email address</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>FR_The Email field is required....</value>
   </data>
   <data name="ForgotYourPassword" xml:space="preserve">
-    <value>Forgot your password?</value>
+    <value>FR_Forgot your password?</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>FR_Please enter a valid email</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>FR_Invalid login attempt.</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>FR_Please enter a password with at least 8 mixed case letters, numbers and special characters.</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Log in</value>
+    <value>FR_Log in</value>
   </data>
   <data name="LogInUsingAccount" xml:space="preserve">
-    <value>Log in using your {0} account</value>
+    <value>FR_Log in using your {0} account</value>
   </data>
   <data name="OauthLogin" xml:space="preserve">
-    <value>Use another service to log in.</value>
+    <value>FR_Use another service to log in.</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>FR_Password</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>FR_The Password field is required</value>
   </data>
   <data name="RegisterAsNewUser" xml:space="preserve">
-    <value>Register as a new user</value>
+    <value>FR_Register as a new user</value>
   </data>
-  <data name="The Email field is required." xml:space="preserve">
-    <value>The Email field is required....</value>
+  <data name="RememberMe" xml:space="preserve">
+    <value>FR_Remember me?</value>
   </data>
 </root>

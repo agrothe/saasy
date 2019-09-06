@@ -1,4 +1,4 @@
-# saasy
+# SaaSy
 SaaSy Framework - ASPNET Core development SaaS starter kit
 
 ### Status

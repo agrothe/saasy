@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account
 {
@@ -29,8 +30,9 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(ForgotPassword))]
+            [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(ForgotPassword))]
+            [Display(Name = "Email", ResourceType = typeof(ForgotPassword))]
             public string Email { get; set; }
         }
 
@@ -56,8 +58,8 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    ForgotPassword.ResetPassword,
+                    string.Format(ForgotPassword.ResetClickHere, HtmlEncoder.Default.Encode(callbackUrl)));
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

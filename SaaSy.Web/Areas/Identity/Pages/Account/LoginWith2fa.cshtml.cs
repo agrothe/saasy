@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account
 {
@@ -33,13 +34,13 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [StringLength(7, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required] //"The {0} must be at least {2} and at max {1} characters long."
+            [StringLength(7, ErrorMessageResourceName = nameof(LoginWith2fa.AuthCodeRequirments), ErrorMessageResourceType = typeof(LoginWith2fa), MinimumLength = 6)]
             [DataType(DataType.Text)]
-            [Display(Name = "Authenticator code")]
+            [Display(Name = nameof(LoginWith2fa.AuthCodeRequirments), ResourceType = typeof(LoginWith2fa))]
             public string TwoFactorCode { get; set; }
 
-            [Display(Name = "Remember this machine")]
+            [Display(Name = nameof(LoginWith2fa.RememberThisMachine), ResourceType = typeof(LoginWith2fa))]
             public bool RememberMachine { get; set; }
         }
 
@@ -50,7 +51,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
 
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException(LoginWith2fa.UnableToLoad2FAUser);
             }
 
             ReturnUrl = returnUrl;
@@ -71,7 +72,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException(LoginWith2fa.UnableToLoad2FAUser);
             }
 
             var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
@@ -91,7 +92,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             else
             {
                 _logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
+                ModelState.AddModelError(string.Empty, LoginWith2fa.InvalidAuthenticatorCode);
                 return Page();
             }
         }

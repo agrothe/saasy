@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SaaSy.Entity.Identity;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account
 {
@@ -42,8 +40,9 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(ExternalLogin))]
+            [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(ExternalLogin))]
+            [Display(Name = "Email", ResourceType = typeof(ExternalLogin))]
             public string Email { get; set; }
         }
 
@@ -65,13 +64,13 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (remoteError != null)
             {
-                ErrorMessage = $"Error from external provider: {remoteError}";
+                ErrorMessage = string.Format(ExternalLogin.ErrorFromExtProvider, remoteError);
                 return RedirectToPage("./Login", new {ReturnUrl = returnUrl });
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information.";
+                ErrorMessage = ExternalLogin.ErrorLoadingExtProvider;
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -109,7 +108,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information during confirmation.";
+                ErrorMessage = ExternalLogin.ErrorLoadingExtProviderConfirm;
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 

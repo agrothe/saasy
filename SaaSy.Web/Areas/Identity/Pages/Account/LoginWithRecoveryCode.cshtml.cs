@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account
 {
@@ -34,7 +33,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             [BindProperty]
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Recovery Code")]
+            [Display(Name = "RecoveryCode", ResourceType = typeof(LoginWithRecoveryCode))]
             public string RecoveryCode { get; set; }
         }
 
@@ -44,7 +43,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException(LoginWithRecoveryCode.UnableToLoad2FAUser);
             }
 
             ReturnUrl = returnUrl;
@@ -62,7 +61,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException(LoginWithRecoveryCode.UnableToLoad2FAUser);
             }
 
             var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);

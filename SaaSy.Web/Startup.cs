@@ -18,6 +18,7 @@ using SaaSy.Domain.Services.Identity;
 using SaaSy.Domain.Services.Util;
 using SaaSy.Entity;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Classes.Identity;
 using SaaSy.Web.Classes.Middleware;
 using System.Globalization;
 
@@ -57,7 +58,8 @@ namespace SaaSy.Web
             services.AddIdentity<ApplicationUser, IdentityRole<long>>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddErrorDescriber<LocalizedErrorDescriber>();
 
 
             // Add our Labels class for l10n, views are localized in SaaSy.Web.Resouces

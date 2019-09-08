@@ -66,6 +66,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LoginWithRecoveryCode.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Areas\Identity\Pages\Account\Manage\ChangePassword.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ChangePassword.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Areas\Identity\Pages\Account\Manage\DeletePersonalData.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DeletePersonalData.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Areas\Identity\Pages\Account\Register.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -112,6 +122,14 @@
     <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\LoginWithRecoveryCode.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LoginWithRecoveryCode.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\Manage\ChangePassword.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangePassword.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\Manage\DeletePersonalData.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeletePersonalData.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\Register.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

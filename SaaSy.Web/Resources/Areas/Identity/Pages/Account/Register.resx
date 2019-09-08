@@ -141,10 +141,10 @@
   <data name="PasswordInvalid" xml:space="preserve">
     <value>The {0} must be at least {2} and at max {1} characters long.</value>
   </data>
-  <data name="Register" xml:space="preserve">
+  <data name="RegisterButton" xml:space="preserve">
     <value>Register</value>
   </data>
-  <data name="RegisterButton" xml:space="preserve">
+  <data name="RegisterTitle" xml:space="preserve">
     <value>Register</value>
   </data>
 </root>

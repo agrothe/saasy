@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
+namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Register {
+    public class DeletePersonalData {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Register() {
+        internal DeletePersonalData() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SaaSy.Web.Resources.Areas.Identity.Pages.Account.Register", typeof(Register).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage.DeletePersonalData", typeof(DeletePersonalData).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,56 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please confirm your account by &lt;a href=&apos;{0}&apos;&gt;clicking here&lt;/a&gt;..
+        ///   Looks up a localized string similar to Delete data and close my account.
         /// </summary>
-        public static string ConfirmEmailLink {
+        public static string DeletePersonalDataButton {
             get {
-                return ResourceManager.GetString("ConfirmEmailLink", resourceCulture);
+                return ResourceManager.GetString("DeletePersonalDataButton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm password.
+        ///   Looks up a localized string similar to Deleting this data will permanently remove your account, and this cannot be recovered..
         /// </summary>
-        public static string ConfirmPassword {
+        public static string DeletePersonalDataDesc {
             get {
-                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+                return ResourceManager.GetString("DeletePersonalDataDesc", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password and confirmation password do not match..
+        ///   Looks up a localized string similar to Delete Personal Data.
         /// </summary>
-        public static string ConfirmPasswordInvalid {
+        public static string DeletePersonalDataTitle {
             get {
-                return ResourceManager.GetString("ConfirmPasswordInvalid", resourceCulture);
+                return ResourceManager.GetString("DeletePersonalDataTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm your email.
+        ///   Looks up a localized string similar to Password not correct..
         /// </summary>
-        public static string ConfirmYourEmail {
+        public static string PasswordNotCorrect {
             get {
-                return ResourceManager.GetString("ConfirmYourEmail", resourceCulture);
+                return ResourceManager.GetString("PasswordNotCorrect", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new account..
+        ///   Looks up a localized string similar to Unable to load user with ID &apos;{0}&apos;..
         /// </summary>
-        public static string CreateNewAccount {
+        public static string UnableToLoadUser {
             get {
-                return ResourceManager.GetString("CreateNewAccount", resourceCulture);
+                return ResourceManager.GetString("UnableToLoadUser", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to Unexpected error occurred deleteing user with ID &apos;{0}&apos;..
         /// </summary>
-        public static string Email {
+        public static string UnexpectedErrorOnDeleting {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password.
-        /// </summary>
-        public static string Password {
-            get {
-                return ResourceManager.GetString("Password", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The {0} must be at least {2} and at max {1} characters long..
-        /// </summary>
-        public static string PasswordInvalid {
-            get {
-                return ResourceManager.GetString("PasswordInvalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Register.
-        /// </summary>
-        public static string RegisterButton {
-            get {
-                return ResourceManager.GetString("RegisterButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Register.
-        /// </summary>
-        public static string RegisterTitle {
-            get {
-                return ResourceManager.GetString("RegisterTitle", resourceCulture);
+                return ResourceManager.GetString("UnexpectedErrorOnDeleting", resourceCulture);
             }
         }
     }

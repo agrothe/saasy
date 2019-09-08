@@ -45,14 +45,14 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessageResourceName = "PasswordInvalid", MinimumLength = 6, ErrorMessageResourceType = = typeof(Register))]
+            [StringLength(100, ErrorMessageResourceName = "PasswordInvalid", MinimumLength = 6, ErrorMessageResourceType = typeof(Register))]
             [DataType(DataType.Password)]
             [Display(Name = "Password", ResourceType = typeof(Register))]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "ConfirmPassword", ResourceType = typeof(Register))]
-            [Compare("Password", ErrorMessageResourceName = "ConfirmPasswordInvalid", ErrorMessageResourceType = = typeof(Register))]
+            [Compare("Password", ErrorMessageResourceName = "ConfirmPasswordInvalid", ErrorMessageResourceType = typeof(Register))]
             public string ConfirmPassword { get; set; }
         }
 

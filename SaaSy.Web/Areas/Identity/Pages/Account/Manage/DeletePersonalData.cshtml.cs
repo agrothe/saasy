@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -42,7 +43,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(DeletePersonalData.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             RequirePassword = await _userManager.HasPasswordAsync(user);
@@ -54,7 +55,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(DeletePersonalData.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             RequirePassword = await _userManager.HasPasswordAsync(user);
@@ -62,7 +63,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             {
                 if (!await _userManager.CheckPasswordAsync(user, Input.Password))
                 {
-                    ModelState.AddModelError(string.Empty, "Password not correct.");
+                    ModelState.AddModelError(string.Empty, DeletePersonalData.PasswordNotCorrect);
                     return Page();
                 }
             }
@@ -71,7 +72,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var userId = await _userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred deleteing user with ID '{userId}'.");
+                throw new InvalidOperationException(string.Format(DeletePersonalData.UnexpectedErrorOnDeleting, userId));
             }
 
             await _signInManager.SignOutAsync();

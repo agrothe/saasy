@@ -126,9 +126,9 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         /// <summary>
         ///   Looks up a localized string similar to Reset password.
         /// </summary>
-        public static string ResetPassword {
+        public static string ResetPasswordTitle {
             get {
-                return ResourceManager.GetString("ResetPassword", resourceCulture);
+                return ResourceManager.GetString("ResetPasswordTitle", resourceCulture);
             }
         }
         

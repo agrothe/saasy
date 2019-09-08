@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmEmail" xml:space="preserve">
-    <value>Confirm Email</value>
-  </data>
   <data name="ConfirmEmailThankYou" xml:space="preserve">
     <value>Thank you for confirming your email.</value>
+  </data>
+  <data name="ConfirmEmailTitle" xml:space="preserve">
+    <value>Confirm Email</value>
   </data>
 </root>

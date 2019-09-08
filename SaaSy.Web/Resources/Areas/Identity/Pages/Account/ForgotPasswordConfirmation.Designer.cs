@@ -72,9 +72,9 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         /// <summary>
         ///   Looks up a localized string similar to Forgot password confirmation.
         /// </summary>
-        public static string ForgotPasswordConfirmation {
+        public static string ForgotPasswordConfirmationTitle {
             get {
-                return ResourceManager.GetString("ForgotPasswordConfirmation", resourceCulture);
+                return ResourceManager.GetString("ForgotPasswordConfirmationTitle", resourceCulture);
             }
         }
     }

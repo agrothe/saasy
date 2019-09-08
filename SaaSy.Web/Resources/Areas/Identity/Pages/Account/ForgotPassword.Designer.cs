@@ -90,9 +90,9 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         /// <summary>
         ///   Looks up a localized string similar to Forgot your password?.
         /// </summary>
-        public static string ForgotPassword {
+        public static string ForgotPasswordTitle {
             get {
-                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+                return ResourceManager.GetString("ForgotPasswordTitle", resourceCulture);
             }
         }
         

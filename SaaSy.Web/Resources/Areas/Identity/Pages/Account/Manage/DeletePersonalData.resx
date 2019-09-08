@@ -117,28 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Email" xml:space="preserve">
-    <value>Email Address</value>
+  <data name="DeletePersonalDataButton" xml:space="preserve">
+    <value>Delete data and close my account</value>
   </data>
-  <data name="EmailRequired" xml:space="preserve">
-    <value>The Email field is required</value>
+  <data name="DeletePersonalDataDesc" xml:space="preserve">
+    <value>Deleting this data will permanently remove your account, and this cannot be recovered.</value>
   </data>
-  <data name="EnterYourEmail" xml:space="preserve">
-    <value>Enter your email.</value>
+  <data name="DeletePersonalDataTitle" xml:space="preserve">
+    <value>Delete Personal Data</value>
   </data>
-  <data name="ForgotPasswordTitle" xml:space="preserve">
-    <value>Forgot your password?</value>
+  <data name="PasswordNotCorrect" xml:space="preserve">
+    <value>Password not correct.</value>
   </data>
-  <data name="InvalidEmail" xml:space="preserve">
-    <value>Please enter a valid email</value>
+  <data name="UnableToLoadUser" xml:space="preserve">
+    <value>Unable to load user with ID '{0}'.</value>
   </data>
-  <data name="ResetClickHere" xml:space="preserve">
-    <value>Please reset your password by &lt;a href='{0}'&gt;clicking here&lt;/a&gt;.</value>
-  </data>
-  <data name="ResetPassword" xml:space="preserve">
-    <value>Reset Password</value>
-  </data>
-  <data name="SubmitButton" xml:space="preserve">
-    <value>Submit</value>
+  <data name="UnexpectedErrorOnDeleting" xml:space="preserve">
+    <value>Unexpected error occurred deleteing user with ID '{0}'.</value>
   </data>
 </root>

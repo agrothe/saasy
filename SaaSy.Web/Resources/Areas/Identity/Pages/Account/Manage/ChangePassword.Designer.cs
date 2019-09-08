@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
+namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Register {
+    public class ChangePassword {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Register() {
+        internal ChangePassword() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SaaSy.Web.Resources.Areas.Identity.Pages.Account.Register", typeof(Register).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage.ChangePassword", typeof(ChangePassword).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,16 +61,16 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please confirm your account by &lt;a href=&apos;{0}&apos;&gt;clicking here&lt;/a&gt;..
+        ///   Looks up a localized string similar to Change password.
         /// </summary>
-        public static string ConfirmEmailLink {
+        public static string ChangePasswordTitle {
             get {
-                return ResourceManager.GetString("ConfirmEmailLink", resourceCulture);
+                return ResourceManager.GetString("ChangePasswordTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm password.
+        ///   Looks up a localized string similar to Confirm new password.
         /// </summary>
         public static string ConfirmPassword {
             get {
@@ -79,7 +79,7 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password and confirmation password do not match..
+        ///   Looks up a localized string similar to The new password and confirmation password do not match..
         /// </summary>
         public static string ConfirmPasswordInvalid {
             get {
@@ -88,38 +88,29 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm your email.
+        ///   Looks up a localized string similar to Current password.
         /// </summary>
-        public static string ConfirmYourEmail {
+        public static string CurrentPassword {
             get {
-                return ResourceManager.GetString("ConfirmYourEmail", resourceCulture);
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new account..
+        ///   Looks up a localized string similar to New password.
         /// </summary>
-        public static string CreateNewAccount {
+        public static string NewPassword {
             get {
-                return ResourceManager.GetString("CreateNewAccount", resourceCulture);
+                return ResourceManager.GetString("NewPassword", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to Your password has been changed..
         /// </summary>
-        public static string Email {
+        public static string PasswordChanged {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Password.
-        /// </summary>
-        public static string Password {
-            get {
-                return ResourceManager.GetString("Password", resourceCulture);
+                return ResourceManager.GetString("PasswordChanged", resourceCulture);
             }
         }
         
@@ -133,20 +124,20 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register.
+        ///   Looks up a localized string similar to Unable to load user with ID &apos;{0}&apos;..
         /// </summary>
-        public static string RegisterButton {
+        public static string UnableToLoadUser {
             get {
-                return ResourceManager.GetString("RegisterButton", resourceCulture);
+                return ResourceManager.GetString("UnableToLoadUser", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register.
+        ///   Looks up a localized string similar to Update password.
         /// </summary>
-        public static string RegisterTitle {
+        public static string UpdatePasswordButton {
             get {
-                return ResourceManager.GetString("RegisterTitle", resourceCulture);
+                return ResourceManager.GetString("UpdatePasswordButton", resourceCulture);
             }
         }
     }

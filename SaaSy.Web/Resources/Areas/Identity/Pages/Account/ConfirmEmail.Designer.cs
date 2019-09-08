@@ -61,20 +61,20 @@ namespace SaaSy.Web.Resources.Areas.Identity.Pages.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm Email.
-        /// </summary>
-        public static string ConfirmEmail {
-            get {
-                return ResourceManager.GetString("ConfirmEmail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Thank you for confirming your email..
         /// </summary>
         public static string ConfirmEmailThankYou {
             get {
                 return ResourceManager.GetString("ConfirmEmailThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Email.
+        /// </summary>
+        public static string ConfirmEmailTitle {
+            get {
+                return ResourceManager.GetString("ConfirmEmailTitle", resourceCulture);
             }
         }
     }

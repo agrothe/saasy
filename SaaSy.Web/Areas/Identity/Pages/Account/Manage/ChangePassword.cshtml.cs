@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
+
 namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
@@ -36,18 +35,18 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Current password")]
+            [Display(Name = "CurrentPassword", ResourceType = typeof(ChangePassword))]
             public string OldPassword { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessageResourceName = "PasswordInvalid", ErrorMessageResourceType = typeof(ChangePassword), MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "New password")]
+            [Display(Name = "NewPassword", ResourceType = typeof(ChangePassword))]
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+            [Display(Name = "ConfirmPassword", ResourceType = typeof(ChangePassword))]
+            [Compare("NewPassword", ErrorMessageResourceName = "ConfirmPasswordInvalid", ErrorMessageResourceType = typeof(ChangePassword))]
             public string ConfirmPassword { get; set; }
         }
 
@@ -56,7 +55,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(ChangePassword.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             var hasPassword = await _userManager.HasPasswordAsync(user);
@@ -78,7 +77,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(ChangePassword.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
@@ -93,7 +92,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            StatusMessage = ChangePassword.PasswordChanged;
 
             return RedirectToPage();
         }

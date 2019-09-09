@@ -21,6 +21,8 @@ using SaaSy.Entity.Identity;
 using SaaSy.Web.Classes.Identity;
 using SaaSy.Web.Classes.Middleware;
 using System.Globalization;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace SaaSy.Web
 {
@@ -44,6 +46,7 @@ namespace SaaSy.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
 
             // consider replacing with IDataContext
             var connectionString = string.Format(
@@ -147,6 +150,27 @@ namespace SaaSy.Web
             app.UseRequestLocalization(localizationOptions);
 
             // app middleware start
+
+            app.UseStatusCodePages(async ctx =>
+            {
+                if (ctx.HttpContext.Response.StatusCode == 404)
+                {
+                    var returnUrl = HttpUtility.HtmlDecode(ctx.HttpContext.Request.Query["ReturnUrl"]);
+                    if (returnUrl != null)
+                    {
+                        // TODO: Security Review
+                        var array = returnUrl.TrimStart('/').Split('/');
+                        var prefix = string.Format("{0}/{1}", array.GetValue(0), array.GetValue(1));
+                        ctx.HttpContext.Response.Redirect(
+                            string.Format(
+                                "/{0}/account/accessdenied?ReturnUrl={1}",
+                                prefix,
+                                HttpUtility.HtmlEncode(returnUrl)
+                            )
+                        );
+                    }
+                }
+            });
 
             // app middleware end
 

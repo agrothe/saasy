@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage;
+using Microsoft.Extensions.Configuration;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -19,17 +21,20 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<EnableAuthenticatorModel> _logger;
         private readonly UrlEncoder _urlEncoder;
+        private IConfiguration Configuration { get; set; }
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
         public EnableAuthenticatorModel(
             UserManager<ApplicationUser> userManager,
             ILogger<EnableAuthenticatorModel> logger,
-            UrlEncoder urlEncoder)
+            UrlEncoder urlEncoder,
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            Configuration = configuration;
         }
 
         public string SharedKey { get; set; }
@@ -48,9 +53,9 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Required]
-            [StringLength(7, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(7, ErrorMessageResourceName = "VerifyCodeErrorMsg", ErrorMessageResourceType = typeof(EnableAuthenticator), MinimumLength = 6)]
             [DataType(DataType.Text)]
-            [Display(Name = "Verification Code")]
+            [Display(Name = "VerificationCode", ResourceType = typeof(EnableAuthenticator))]
             public string Code { get; set; }
         }
 
@@ -59,7 +64,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(EnableAuthenticator.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             await LoadSharedKeyAndQrCodeUriAsync(user);
@@ -72,7 +77,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(EnableAuthenticator.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             if (!ModelState.IsValid)
@@ -89,7 +94,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
 
             if (!is2faTokenValid)
             {
-                ModelState.AddModelError("Input.Code", "Verification code is invalid.");
+                ModelState.AddModelError("Input.Code", EnableAuthenticator.InvalidCode);
                 await LoadSharedKeyAndQrCodeUriAsync(user);
                 return Page();
             }
@@ -98,7 +103,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var userId = await _userManager.GetUserIdAsync(user);
             _logger.LogInformation("User with ID '{UserId}' has enabled 2FA with an authenticator app.", userId);
 
-            StatusMessage = "Your authenticator app has been verified.";
+            StatusMessage = EnableAuthenticator.AppIsVerified;
 
             if (await _userManager.CountRecoveryCodesAsync(user) == 0)
             {
@@ -149,7 +154,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("SaaSy.Web"),
+                _urlEncoder.Encode(Configuration.GetValue("Site.Name", string.Empty)),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

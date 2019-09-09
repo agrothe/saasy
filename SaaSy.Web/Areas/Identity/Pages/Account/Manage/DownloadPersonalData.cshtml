@@ -1,7 +1,8 @@
 ﻿@page "~/{locale=en-us}/{tenant}/account/manage/downloadpersonaldata"
+@inject IViewLocalizer Localizer
 @model DownloadPersonalDataModel
 @{
-    ViewData["Title"] = "Download Your Data";
+    ViewData["Title"] = Localizer["DownloadYourDataTitle"];
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 

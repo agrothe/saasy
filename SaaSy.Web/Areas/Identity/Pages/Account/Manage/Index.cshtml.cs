@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SaaSy.Entity.Identity;
+using SaaSy.Web.Resources.Areas.Identity.Pages.Account.Manage;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -42,10 +41,11 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
+            [Display(Name = "Email", ResourceType = typeof(Index))]
             public string Email { get; set; }
 
-            [Phone]
-            [Display(Name = "Phone number")]
+            [Phone(ErrorMessageResourceName = "InvalidPhone", ErrorMessageResourceType = typeof(Index))]
+            [Display(Name = "PhoneNumber", ResourceType = typeof(Index))]
             public string PhoneNumber { get; set; }
         }
 
@@ -54,7 +54,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(Index.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             var userName = await _userManager.GetUserNameAsync(user);
@@ -84,7 +84,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(Index.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
             var email = await _userManager.GetEmailAsync(user);
@@ -94,7 +94,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
                 if (!setEmailResult.Succeeded)
                 {
                     var userId = await _userManager.GetUserIdAsync(user);
-                    throw new InvalidOperationException($"Unexpected error occurred setting email for user with ID '{userId}'.");
+                    throw new InvalidOperationException(string.Format(Index.ErrorSettingEmail, userId));
                 }
             }
 
@@ -105,12 +105,12 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
                 if (!setPhoneResult.Succeeded)
                 {
                     var userId = await _userManager.GetUserIdAsync(user);
-                    throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
+                    throw new InvalidOperationException(string.Format(Index.ErrorSettingPhone, userId));
                 }
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = Index.ProfileUpdated;
             return RedirectToPage();
         }
 
@@ -124,7 +124,7 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound(string.Format(Index.UnableToLoadUser, _userManager.GetUserId(User)));
             }
 
 
@@ -138,10 +138,10 @@ namespace SaaSy.Web.Areas.Identity.Pages.Account.Manage
                 protocol: Request.Scheme);
             await _emailSender.SendEmailAsync(
                 email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                Index.ConfirmYourEmail,
+                string.Format(Index.PleaseClickToConfirmEmail, HtmlEncoder.Default.Encode(callbackUrl)));
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = Index.VerifyEmailSent;
             return RedirectToPage();
         }
     }

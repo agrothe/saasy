@@ -23,8 +23,14 @@ Routing is defined as:
 
 `https://domain.com/{locale}/{tenant code}/{area?}/{controller}/{action}/{params?}/`
 
+So an application page action Signup on controlller Newsletter would be:
+
+`https://domain.com/en/app/newsletter/signup`
+
+The Identity area uses the default Razor pages and has been mapped to just the `account` controller.
+
 For example, our login page will be
 
-`https://domain.com/en/app/identity/account/login`
+`https://domain.com/en/app/account/login`
 
-The default base tenant is defined as "app", so if you don't wish to have a multi-tenant application you can disable the creation of new tenants and just roll with the default.
+The default base tenant is defined as "app", so if you don't wish to have a multi-tenant application you can disable the creation of new tenants and just roll with the default or modify the code to removed tenants altogether.

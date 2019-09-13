@@ -10,8 +10,8 @@ using SaaSy.Data.Context;
 namespace SaaSy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190902173159_Tenants")]
-    partial class Tenants
+    [Migration("20190913142354_CreateSaaSyDb")]
+    partial class CreateSaaSyDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,14 +116,11 @@ namespace SaaSy.Data.Migrations
 
                     b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
-                    b.HasKey("UserId", "LoginProvider");
-
-                    b.HasAlternateKey("UserId", "LoginProvider", "Name");
+                    b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("UserTokens");
                 });

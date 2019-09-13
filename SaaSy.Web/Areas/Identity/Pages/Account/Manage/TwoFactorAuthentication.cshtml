@@ -14,21 +14,30 @@
     {
         <div class="alert alert-danger">
             <strong>@Localizer["NoCodesLeft"]</strong>
-            <p>@Localizer["YouMust_1"] <a asp-page="./GenerateRecoveryCodes">@Localizer["YouMust_2"]</a> @Localizer["YouMust_3"]</p>
+            <p>@Localizer["YouMust_1"] <a asp-page="GenerateRecoveryCodes"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["YouMust_2"]</a> @Localizer["YouMust_3"]</p>
         </div>
     }
     else if (Model.RecoveryCodesLeft == 1)
     {
         <div class="alert alert-danger">
             <strong>@Localizer["OneCodeLeft"]</strong>
-            <p>@Localizer["YouCan_1"] <a asp-page="./GenerateRecoveryCodes">@Localizer["YouCan_2"]</a>@Localizer["YouCan_3"]</p>
+            <p>@Localizer["YouCan_1"] <a asp-page="GenerateRecoveryCodes"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["YouCan_2"]</a>@Localizer["YouCan_3"]</p>
         </div>
     }
     else if (Model.RecoveryCodesLeft <= 3)
     {
         <div class="alert alert-warning">
             <strong>@string.Format(Localizer["YouHaveXCodesLeft"].Value,Model.RecoveryCodesLeft)</strong>
-            <p>@Localizer["YouShould_1"] <a asp-page="./GenerateRecoveryCodes">@Localizer["YouShould_2"]</a>@Localizer["YouShould_3"]</p>
+            <p>@Localizer["YouShould_1"] <a asp-page="GenerateRecoveryCodes"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["YouShould_2"]</a>@Localizer["YouShould_3"]</p>
         </div>
     }
 
@@ -38,19 +47,34 @@
             <button type="submit" class="btn btn-primary">@Localizer["ForgetThisBrowser"]</button>
         </form>
     }
-    <a asp-page="./Disable2fa" class="btn btn-primary">@Localizer["Disable2FA"]</a>
-    <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">@Localizer["ResetRecoveryCcodes"]</a>
+    <a asp-page="Disable2fa"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]" class="btn btn-primary">@Localizer["Disable2FA"]</a>
+    <a asp-page="GenerateRecoveryCodes"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]" class="btn btn-primary">@Localizer["ResetRecoveryCcodes"]</a>
 }
 
 <h5>@Localizer["AuthenticatorApp"]</h5>
 @if (!Model.HasAuthenticator)
 {
-    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">@Localizer["AddAuthenticatorApp"]</a>
+    <a id="enable-authenticator" asp-page="./EnableAuthenticator"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]" class="btn btn-primary">@Localizer["AddAuthenticatorApp"]</a>
 }
 else
 {
-    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">@Localizer["SetupAuthenticatorApp"]</a>
-    <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">@Localizer["ResetAuthenticatorApp"]</a>
+    <a id="enable-authenticator" asp-page="./EnableAuthenticator"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]" class="btn btn-primary">@Localizer["SetupAuthenticatorApp"]</a>
+    <a id="reset-authenticator" asp-page="./ResetAuthenticator"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]" class="btn btn-primary">@Localizer["ResetAuthenticatorApp"]</a>
 }
 
 @section Scripts {

@@ -114,14 +114,11 @@ namespace SaaSy.Data.Migrations
 
                     b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
-                    b.HasKey("UserId", "LoginProvider");
-
-                    b.HasAlternateKey("UserId", "LoginProvider", "Name");
+                    b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("UserTokens");
                 });

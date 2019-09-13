@@ -56,11 +56,8 @@ namespace SaaSy.Data.Context
                 .HasKey(x => new { x.UserId, x.RoleId });
 
             ctx.Entity<IdentityUserToken<long>>()
-                .ToTable("UserTokens");
-
-            ctx.Entity<IdentityUserToken<long>>()
                 .ToTable("UserTokens")
-                .HasKey(x => new { x.UserId, x.LoginProvider });
+                .HasKey(x => new { x.UserId, x.LoginProvider, x.Name });
 
             ctx.ApplyConfiguration(new TenantConfig());
             ctx.ApplyConfiguration(new TenantLocaleConfig());

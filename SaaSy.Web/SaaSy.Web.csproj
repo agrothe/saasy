@@ -5,6 +5,7 @@
     <UserSecretsId>aspnet-SaaSy.Web-194FD00C-6163-4B94-A66A-169CAF8809F2</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
 

@@ -16,7 +16,10 @@
     </p>
     <p>
         @Localizer["Disable2faDesc"]
-        <a asp-page="./ResetAuthenticator">@Localizer["ResetAuthenticatorKeys"]</a>
+        <a asp-page="./ResetAuthenticator"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["ResetAuthenticatorKeys"]</a>
 </p>
 </div>
 

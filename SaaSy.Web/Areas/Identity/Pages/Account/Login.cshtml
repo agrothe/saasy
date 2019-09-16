@@ -36,10 +36,16 @@
                 </div>
                 <div class="form-group">
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">@Localizer["ForgotYourPassword"]</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword"
+                            asp-area="Identity" 
+                            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+                            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["ForgotYourPassword"]</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["RegisterAsNewUser"]</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl"
+                            asp-area="Identity" 
+                            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+                            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["RegisterAsNewUser"]</a>
                     </p>
                 </div>
             </form>
@@ -62,7 +68,11 @@
                 }
                 else
                 {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                    <form id="external-account" asp-page="./ExternalLogin"
+                            asp-area="Identity" 
+                            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+                            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]"
+                            asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                         <div>
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)

@@ -17,7 +17,10 @@
         @Localizer["LoseAccessLostDevice"]
     </p>
     <p>
-        @Localizer["GeneratingNewCodes"] <a asp-page="./ResetAuthenticator">@Localizer["GeneratingNewCodes_2"]</a>
+        @Localizer["GeneratingNewCodes"] <a asp-page="./ResetAuthenticator"
+            asp-area="Identity" 
+            asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+            asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["GeneratingNewCodes_2"]</a>
     </p>
 </div>
 <div>

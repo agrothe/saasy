@@ -14,11 +14,19 @@
         <p>
             <strong>@Localizer["PermanentlyDeleted"]</strong>
         </p>
-        <form id="download-data" asp-page="DownloadPersonalData" method="post" class="form-group">
+        <form id="download-data" asp-page="DownloadPersonalData"
+                asp-area="Identity" 
+                asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+                asp-route-tenant="@ViewContext.RouteData.Values["tenant"]"
+              method="post" class="form-group">
             <button class="btn btn-primary" type="submit">@Localizer["DownloadButton"]</button>
         </form>
         <p>
-            <a id="delete" asp-page="DeletePersonalData" class="btn btn-primary">@Localizer["DeleteButton"]</a>
+            <a id="delete" asp-page="DeletePersonalData"
+                asp-area="Identity" 
+                asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+                asp-route-tenant="@ViewContext.RouteData.Values["tenant"]"
+               class="btn btn-primary">@Localizer["DeleteButton"]</a>
         </p>
     </div>
 </div>

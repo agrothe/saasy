@@ -34,7 +34,10 @@
 </div>
 <p>
     @Localizer["DontHaveAccessToDevice"]
-    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["UseRecoveryCode"]</a>.
+    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl"
+        asp-area="Identity" 
+        asp-route-locale="@ViewContext.RouteData.Values["locale"]"
+        asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">@Localizer["UseRecoveryCode"]</a>.
 </p>
 
 @section Scripts {

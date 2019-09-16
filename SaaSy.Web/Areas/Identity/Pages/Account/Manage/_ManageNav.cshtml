@@ -5,7 +5,7 @@
 }
 <ul class="nav nav-pills flex-column">
     <li class="nav-item">
-        <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="Index"
+        <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index"
             asp-area="Identity" 
             asp-route-locale="@ViewContext.RouteData.Values["locale"]"
             asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">
@@ -14,7 +14,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" 
-            asp-page="ChangePassword"
+            asp-page="./ChangePassword"
             asp-area="Identity" 
             asp-route-locale="@ViewContext.RouteData.Values["locale"]"
             asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">
@@ -24,7 +24,7 @@
     @if (hasExternalLogins)
     {
         <li id="external-logins" class="nav-item">
-            <a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="ExternalLogins"
+            <a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins"
             asp-area="Identity" 
             asp-route-locale="@ViewContext.RouteData.Values["locale"]"
             asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">
@@ -33,7 +33,7 @@
         </li>
     }
     <li class="nav-item">
-        <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="TwoFactorAuthentication"
+        <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication"
             asp-area="Identity" 
             asp-route-locale="@ViewContext.RouteData.Values["locale"]"
             asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">
@@ -41,7 +41,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="PersonalData"
+        <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData"
             asp-area="Identity" 
             asp-route-locale="@ViewContext.RouteData.Values["locale"]"
             asp-route-tenant="@ViewContext.RouteData.Values["tenant"]">
